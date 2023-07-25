@@ -2,47 +2,36 @@ package com.ust.restapicrudexample.controllers;
 
 import com.ust.restapicrudexample.controllers.handlers.CustomerNotFoundException;
 import com.ust.restapicrudexample.model.Customer;
-import com.ust.restapicrudexample.persistance.CustomerRepository;
 import com.ust.restapicrudexample.services.CustomerService;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping(value="/customer")
 public class CustomerController {
 
     @Autowired
     CustomerService customerService;
 
-    @ApiOperation(value = "All()"
-            ,notes = "Lists all existing customers in the database.")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "OK. Customers are sourced correctly.", response = Customer.class ),
-            @ApiResponse(code = 400, message = "Bad Request. Answer in string format.", response = String.class),
-            @ApiResponse(code = 500, message = "Unexpected system error.") })
-    @GetMapping("/customers")
+    @GetMapping(value="/customers")
     List<Customer> all()
     {
 
         return customerService.listCustomers();
     }
 
-    @GetMapping("/customersinactives")
+    @GetMapping(value="/customersinactives")
     List<Customer> allInactives()
     {
 
         return customerService.listCustomersInactives();
     }
 
-    @GetMapping("/customers/{id}")
+    @GetMapping(value="/customer/{id}")
     Customer getById(@PathVariable Long id)
     {
         return customerService.getCustomerById(id).orElseThrow(() -> new CustomerNotFoundException(id));
@@ -50,14 +39,14 @@ public class CustomerController {
         //return customer.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/customers")
+    @PostMapping(value="/customer/")
     Customer createNew(@Valid @RequestBody Customer newCustomer)
     {
 
         return customerService.createNewCustomer(newCustomer);
     }
 
-    @DeleteMapping("/customers/{id}")
+    @DeleteMapping(value="/customer/{id}")
     ResponseEntity<Void> delete(@PathVariable Long id)
     {
         if (customerService.deleteCustomer(id))
@@ -70,7 +59,7 @@ public class CustomerController {
         }
     }
 
-    @PutMapping("/customers/{id}")
+    @PutMapping(value="/customer/{id}")
     Customer updateOrCreate(@Valid @RequestBody Customer newCustomer, @PathVariable Long id) {
         return customerService.updateCustomer(newCustomer, id);
     }

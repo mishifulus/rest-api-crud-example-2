@@ -2,21 +2,14 @@ package com.ust.restapicrudexample;
 
 import com.ust.restapicrudexample.model.Customer;
 import com.ust.restapicrudexample.model.Item;
-import com.ust.restapicrudexample.model.Sale;
 import com.ust.restapicrudexample.persistance.CustomerRepository;
 import com.ust.restapicrudexample.persistance.ItemRepository;
 import com.ust.restapicrudexample.persistance.SaleRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @SpringBootApplication
 public class RestApiCrudExampleApplication implements CommandLineRunner {

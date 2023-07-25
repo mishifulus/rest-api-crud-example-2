@@ -15,27 +15,27 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/item")
+@RequestMapping(value="/item")
 public class ItemController {
 
     @Autowired
     ItemService itemService;
 
-    @GetMapping("/items")
+    @GetMapping(value="/items")
     List<Item> all()
     {
 
         return itemService.listItems();
     }
 
-    @GetMapping("/itemsinactives")
+    @GetMapping(value="/itemsinactives")
     List<Item> allInactives()
     {
 
         return itemService.listItemsInactives();
     }
 
-    @GetMapping("/items/{id}")
+    @GetMapping(value="/item/{id}")
     Item getById(@PathVariable Long id)
     {
         return itemService.getItemById(id).orElseThrow(() -> new ItemNotFoundException(id));
@@ -43,14 +43,14 @@ public class ItemController {
         //return item.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/items")
+    @PostMapping(value="/item")
     Item createNew(@Valid @RequestBody Item newItem)
     {
 
         return itemService.createNewItem(newItem);
     }
 
-    @DeleteMapping("/items/{id}")
+    @DeleteMapping(value="/item/{id}")
     ResponseEntity<Void> delete(@PathVariable Long id)
     {
 
@@ -64,7 +64,7 @@ public class ItemController {
         }
     }
 
-    @PutMapping("/items/{id}")
+    @PutMapping(value="/item/{id}")
     Item updateOrCreate(@Valid @RequestBody Item newItem, @PathVariable Long id) {
         return itemService.updateItem(newItem, id);
     }

@@ -14,27 +14,27 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/sale")
+@RequestMapping(value="/sale")
 public class SaleController {
 
     @Autowired
     SaleService saleService;
 
-    @GetMapping("/sales")
+    @GetMapping(value="/sales")
     List<Sale> all()
     {
 
         return saleService.listSales();
     }
 
-    @GetMapping("/salesinactives")
+    @GetMapping(value="/salesinactives")
     List<Sale> allInactives()
     {
 
         return saleService.listSalesInactives();
     }
 
-    @GetMapping("/sales/{id}")
+    @GetMapping(value="/sale/{id}")
     Sale getById(@PathVariable Long id)
     {
         return saleService.getSaleById(id).orElseThrow(() -> new SaleNotFoundException(id));
@@ -42,14 +42,14 @@ public class SaleController {
         //return sale.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/sales")
+    @PostMapping(value="/sale")
     Sale createNew(@Valid @RequestBody Sale newSale)
     {
 
         return saleService.createNewSale(newSale);
     }
 
-    @DeleteMapping("/sales/{id}")
+    @DeleteMapping(value="/sale/{id}")
     ResponseEntity<Void> delete(@PathVariable Long id)
     {
         if (saleService.deleteSale(id))
@@ -62,12 +62,12 @@ public class SaleController {
         }
     }
 
-    @PutMapping("/sales/{id}")
+    @PutMapping(value="/sale/{id}")
     Sale updateOrCreate(@Valid @RequestBody Sale newSale, @PathVariable Long id) {
         return saleService.updateSale(newSale, id);
     }
 
-    @GetMapping("/sales/{id}/items")
+    @GetMapping(value="/sales/{id}/items")
     ResponseEntity<List<Item>> getItemsBySaleId(@PathVariable Long id)
     {
 
