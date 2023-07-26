@@ -1,15 +1,13 @@
 package com.ust.restapicrudexample.model;
-
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -23,23 +21,23 @@ public class Item {
     private Long id;
 
     @Column(nullable = false, length = 20)
-    @NotBlank
+    @NotBlank(message = "Name is mandatory")
     @NotNull
     private String name;
 
     @Column(nullable = false, length = 100)
-    @NotBlank
+    @NotBlank(message = "Description is mandatory")
     @NotNull
     private String description;
 
     @Column(nullable = false)
-    @NotNull
+    @NotNull(message = "Price is mandatory")
     @Min(value = 0)
     @Max(value = 10000)
     private double price;
 
     @Column(nullable = false, length = 20)
-    @NotBlank
+    @NotBlank(message = "Category is mandatory")
     @NotNull
     private String category;
 

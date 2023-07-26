@@ -1,10 +1,13 @@
 package com.ust.restapicrudexample.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -18,28 +21,28 @@ public class Customer {
     private Long id;
 
     @Column(nullable = false, length = 20)
-    @NotBlank
+    @NotBlank(message = "Name is mandatory")
     @NotNull
     private String name;
 
     @Column(nullable = false, length = 20)
-    @NotBlank
+    @NotBlank(message = "Last name is mandatory")
     @NotNull
     private String lastName;
 
     @Column(nullable = false, length = 50, unique = true)
-    @NotBlank
+    @NotBlank(message = "Email is mandatory")
     @NotNull
     @Email
     private String email;
 
     @Column(length = 12)
-    @NotBlank
+    @NotBlank(message = "Phone is mandatory")
     @NotNull
     private String phone;
 
     @Column(length = 100)
-    @NotBlank
+    @NotBlank(message = "Address is mandatory")
     @NotNull
     private String address;
 

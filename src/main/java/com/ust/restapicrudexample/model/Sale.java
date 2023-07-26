@@ -1,14 +1,13 @@
 package com.ust.restapicrudexample.model;
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -24,7 +23,7 @@ public class Sale {
     private Long id;
 
     @Column(nullable = false)
-    @NotNull
+    @NotNull(message = "Total is mandatory")
     @Min(value = 0)
     @Max(value = 1000000)
     private float total;
@@ -39,11 +38,11 @@ public class Sale {
     private List<Item> items;
 
     @ManyToOne // Solo un cliente
-    @NotNull
+    @NotNull(message = "Customer is mandatory")
     private Customer customer;
 
     @Column(nullable = false)
-    @NotNull
+    @NotNull(message = "Date is mandatory")
     private LocalDateTime date;
 
     @Column(nullable = false)
