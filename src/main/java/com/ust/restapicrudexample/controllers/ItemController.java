@@ -1,18 +1,15 @@
 package com.ust.restapicrudexample.controllers;
 
 import com.ust.restapicrudexample.controllers.handlers.ItemNotFoundException;
-import com.ust.restapicrudexample.controllers.handlers.SaleNotFoundException;
 import com.ust.restapicrudexample.model.Item;
-import com.ust.restapicrudexample.persistance.ItemRepository;
 import com.ust.restapicrudexample.services.ItemService;
+//import jakarta.validation.Valid;
 import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value="/item")

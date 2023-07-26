@@ -1,4 +1,4 @@
-package com.ust.restapicrudexample.persistance;
+package com.ust.restapicrudexample.persistence;
 
 import com.ust.restapicrudexample.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -2,9 +2,9 @@ package com.ust.restapicrudexample;
 
 import com.ust.restapicrudexample.model.Customer;
 import com.ust.restapicrudexample.model.Item;
-import com.ust.restapicrudexample.persistance.CustomerRepository;
-import com.ust.restapicrudexample.persistance.ItemRepository;
-import com.ust.restapicrudexample.persistance.SaleRepository;
+import com.ust.restapicrudexample.persistence.CustomerRepository;
+import com.ust.restapicrudexample.persistence.ItemRepository;
+import com.ust.restapicrudexample.persistence.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,9 +24,6 @@ public class RestApiCrudExampleApplication implements CommandLineRunner {
 	@Autowired
 	CustomerRepository customerRepository;
 
-
-	@Autowired
-	SaleRepository saleRepository;
 
 	@Override
 	public void run(String... args) throws Exception

@@ -1,7 +1,7 @@
 package com.ust.restapicrudexample.services;
 
 import com.ust.restapicrudexample.model.Customer;
-import com.ust.restapicrudexample.persistance.CustomerRepository;
+import com.ust.restapicrudexample.persistence.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
 package com.ust.restapicrudexample.services;
 
 import com.ust.restapicrudexample.model.Item;
-import com.ust.restapicrudexample.persistance.ItemRepository;
+import com.ust.restapicrudexample.persistence.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
