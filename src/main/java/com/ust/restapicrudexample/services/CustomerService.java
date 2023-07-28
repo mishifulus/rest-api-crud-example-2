@@ -71,6 +71,5 @@ public class CustomerService {
                     newCustomer.setId(id);
                     return customerRepository.save(newCustomer);
                 });
-
     }
 }
