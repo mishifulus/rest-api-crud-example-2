@@ -45,7 +45,7 @@ public class RestApiCrudExampleApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception
 	{
 
-		Customer customer = customerService.createNewCustomer(new Customer(null, "Citlalli", "Martinez", "citla@gmail.com","524772337489", "Geiser 112A Leon, Guanajuato", 1));
+		customerService.createNewCustomer(new Customer(null, "Citlalli", "Martinez", "citla@gmail.com","524772337489", "Geiser 112A Leon, Guanajuato", 1));
 		customerService.createNewCustomer(new Customer(null, "Jazmin", "Rios", "jaz@gmail.com","524772849586", "Heroes 212 Leon, Guanajuato", 1));
 		customerService.createNewCustomer(new Customer(null, "Carlos", "Martinez", "carlos@gmail.com","524775873658", "Geiser 112A Leon, Guanajuato", 1));
 		customerService.createNewCustomer(new Customer(null, "Alexa", "Lopez", "alexa@gmail.com","524777542987", "La Antorcha 132 Leon, Guanajuato", 1));
@@ -57,6 +57,7 @@ public class RestApiCrudExampleApplication implements CommandLineRunner {
 		itemService.createNewItem(new Item(null, "Borrador", "Borrador para lapiz", 5.2, "Papeleria", 1));
 		itemService.createNewItem(new Item(null, "Pluma", "Pluma negra de punto fino", 20.6, "Papeleria", 1));
 
+		Customer customer = new Customer(null, "Citlalli", "Martinez", "citla@gmail.com","524772337489", "Geiser 112A Leon, Guanajuato", 1);
 		List<Item> itemList = new ArrayList<>();
 		itemList.add(item1);
 

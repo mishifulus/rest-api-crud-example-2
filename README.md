@@ -32,9 +32,11 @@ To run this API, you will need to have the following installed:
 
 1. Clone this repository or download the files to your local machine.
 
-3. Open the project in your selected IDE.
+2. Compile and run the Spring Boot application with the command **mvn clean spring-boot:run**
 
-5. Compile and run the Spring Boot application with the command mvn clean spring-boot:run
+3. Open your project in terminal and run the following command to start the containers: **docker-compose up -d**
+
+4. To stop and delete containers use the command: **docker-compose down**
 
 ## Endpoints
 The API provides the following endpoints to interact with the database:
