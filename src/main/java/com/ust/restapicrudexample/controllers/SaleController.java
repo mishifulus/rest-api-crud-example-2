@@ -21,7 +21,7 @@ public class SaleController {
     @Autowired
     SaleService saleService;
 
-    @GetMapping(value="/sales")
+    @GetMapping(value="/")
     @ApiOperation("Get all sales")
     List<Sale> all()
     {
@@ -29,15 +29,15 @@ public class SaleController {
         return saleService.listSales();
     }
 
-    @GetMapping(value="/salesinactives")
-    @ApiOperation("Get all inactives sales")
-    List<Sale> allInactives()
+    @GetMapping(value="/bystatus/{status}")
+    @ApiOperation("Get all sales by status")
+    List<Sale> getByStatus(@PathVariable int status)
     {
 
-        return saleService.listSalesInactives();
+        return saleService.listSalesByStatus(status);
     }
 
-    @GetMapping(value="/sale/{id}")
+    @GetMapping(value="/{id}")
     @ApiOperation("Get a sale by id")
     Sale getById(@PathVariable Long id)
     {
@@ -46,7 +46,7 @@ public class SaleController {
         //return sale.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping(value="/sale")
+    @PostMapping(value="/")
     @ApiOperation("Create a new sale")
     Sale createNew(@Valid @RequestBody Sale newSale)
     {
@@ -54,7 +54,7 @@ public class SaleController {
         return saleService.createNewSale(newSale);
     }
 
-    @DeleteMapping(value="/sale/{id}")
+    @DeleteMapping(value="/{id}")
     @ApiOperation("Delete an existent sale")
     ResponseEntity<Void> delete(@PathVariable Long id)
     {
@@ -68,13 +68,13 @@ public class SaleController {
         }
     }
 
-    @PutMapping(value="/sale/{id}")
+    @PutMapping(value="/{id}")
     @ApiOperation("Update an existent sale or create a new sale")
     Sale updateOrCreate(@Valid @RequestBody Sale newSale, @PathVariable Long id) {
         return saleService.updateSale(newSale, id);
     }
 
-    @GetMapping(value="/sales/{id}/items")
+    @GetMapping(value="/{id}/items")
     @ApiOperation("Get all items by sale")
     ResponseEntity<List<Item>> getItemsBySaleId(@PathVariable Long id)
     {

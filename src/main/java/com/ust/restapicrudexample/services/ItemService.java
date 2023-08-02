@@ -19,9 +19,10 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
-    public List<Item> listItemsInactives()
+    public List<Item> listItemsByStatus(int status)
     {
-        return itemRepository.findByStatus(0);
+
+        return itemRepository.findByStatus(status);
     }
 
     public Optional<Item> getItemById(Long id)

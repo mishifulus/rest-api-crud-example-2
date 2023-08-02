@@ -20,7 +20,7 @@ public class CustomerController {
     @Autowired
     CustomerService customerService;
 
-    @GetMapping(value="/customers")
+    @GetMapping(value="/")
     @ApiOperation("Get all customers")
     List<Customer> all()
     {
@@ -28,15 +28,15 @@ public class CustomerController {
         return customerService.listCustomers();
     }
 
-    @GetMapping(value="/customersinactives")
-    @ApiOperation("Get all inactives customers")
-    List<Customer> allInactives()
+    @GetMapping(value="/bystatus/{status}")
+    @ApiOperation("Get all customers by status")
+    List<Customer> getByStatus(@PathVariable int status)
     {
 
-        return customerService.listCustomersInactives();
+        return customerService.listCustomersByStatus(status);
     }
 
-    @GetMapping(value="/customer/{id}")
+    @GetMapping(value="/{id}")
     @ApiOperation("Get a customer by id")
     Customer getById(@PathVariable Long id)
     {
@@ -45,7 +45,7 @@ public class CustomerController {
         //return customer.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping(value="/customer/")
+    @PostMapping(value="/")
     @ApiOperation("Create a new customer")
     Customer createNew(@Valid @RequestBody Customer newCustomer)
     {
@@ -53,7 +53,7 @@ public class CustomerController {
         return customerService.createNewCustomer(newCustomer);
     }
 
-    @DeleteMapping(value="/customer/{id}")
+    @DeleteMapping(value="/{id}")
     @ApiOperation("Delete an existent customer")
     ResponseEntity<Void> delete(@PathVariable Long id)
     {
@@ -67,7 +67,7 @@ public class CustomerController {
         }
     }
 
-    @PutMapping(value="/customer/{id}")
+    @PutMapping(value="/{id}")
     @ApiOperation("Update an existent customer or create a new customer")
     Customer updateOrCreate(@Valid @RequestBody Customer newCustomer, @PathVariable Long id) {
         return customerService.updateCustomer(newCustomer, id);

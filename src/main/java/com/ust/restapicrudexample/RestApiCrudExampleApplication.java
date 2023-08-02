@@ -68,4 +68,5 @@ public class RestApiCrudExampleApplication implements CommandLineRunner {
 
 	// CONSOLA: http://localhost:8080/h2-console
 	// SWAGGER: http://localhost:8080/swagger-ui/index.html#/
+	// CONTENEDOR DE DOCKER: docker run -d --rm --name mysql_container -e MYSQL_ROOT_PASSWORD=pass -p 3306:3306 -v mysql_data:/var/lib/mysql mysql:8 --default-authentication-plugin=mysql_native_password
 }

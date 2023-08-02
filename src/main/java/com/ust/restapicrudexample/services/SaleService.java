@@ -20,9 +20,10 @@ public class SaleService {
         return saleRepository.findAll();
     }
 
-    public List<Sale> listSalesInactives()
+    public List<Sale> listSalesByStatus(int status)
     {
-        return saleRepository.findByStatus(0);
+
+        return saleRepository.findByStatus(status);
     }
 
     public Optional<Sale> getSaleById(Long id)

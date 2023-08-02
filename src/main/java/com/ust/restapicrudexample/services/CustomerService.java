@@ -20,10 +20,10 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    public List<Customer> listCustomersInactives()
+    public List<Customer> listCustomersByStatus(int status)
     {
 
-        return customerRepository.findByStatus(0);
+        return customerRepository.findByStatus(status);
     }
 
     public Optional<Customer> getCustomerById(Long id)

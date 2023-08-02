@@ -20,7 +20,7 @@ public class ItemController {
     @Autowired
     ItemService itemService;
 
-    @GetMapping(value="/items")
+    @GetMapping(value="/")
     @ApiOperation("Get all items")
     List<Item> all()
     {
@@ -28,15 +28,15 @@ public class ItemController {
         return itemService.listItems();
     }
 
-    @GetMapping(value="/itemsinactives")
-    @ApiOperation("Get all inactives items")
-    List<Item> allInactives()
+    @GetMapping(value="/bystatus/{status}")
+    @ApiOperation("Get all items by status")
+    List<Item> getByStatus(@PathVariable int status)
     {
 
-        return itemService.listItemsInactives();
+        return itemService.listItemsByStatus(status);
     }
 
-    @GetMapping(value="/item/{id}")
+    @GetMapping(value="/{id}")
     @ApiOperation("Get an item by id")
     Item getById(@PathVariable Long id)
     {
@@ -45,7 +45,7 @@ public class ItemController {
         //return item.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping(value="/item")
+    @PostMapping(value="/")
     @ApiOperation("Create a new item")
     Item createNew(@Valid @RequestBody Item newItem)
     {
@@ -53,7 +53,7 @@ public class ItemController {
         return itemService.createNewItem(newItem);
     }
 
-    @DeleteMapping(value="/item/{id}")
+    @DeleteMapping(value="/{id}")
     @ApiOperation("Delete an existent item")
     ResponseEntity<Void> delete(@PathVariable Long id)
     {
@@ -68,7 +68,7 @@ public class ItemController {
         }
     }
 
-    @PutMapping(value="/item/{id}")
+    @PutMapping(value="/{id}")
     @ApiOperation("Update an existent item or create a new item")
     Item updateOrCreate(@Valid @RequestBody Item newItem, @PathVariable Long id) {
         return itemService.updateItem(newItem, id);

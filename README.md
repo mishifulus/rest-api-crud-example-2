@@ -13,16 +13,20 @@ To run this API, you will need to have the following installed:
 3. A tool for testing HTTP requests such as Postman.
 
 ## Database Configuration
-1. Create an empty database on your database server. Save the database name, user name and password you will use for the connection.
+1. Create a container in Docker with the following configuration and run it:
+   **docker run -d --rm --name mysql_container -e MYSQL_ROOT_PASSWORD=pass -p 3306:3306 -v mysql_data:/var/lib/mysql mysql:8 --default-authentication-plugin=mysql_native_password**
+
+2. In the container with MySQL, create an empty database.
 
 3. Open the application.yml file located in the src/main/resources folder.
 
-5. Modify the following lines to match the data in your database:
+4. Modify the following lines to match the data in your database:
 
   datasource:
       url: jdbc:mysql://localhost:3306/[YOUR_DATABASE]?serverTimezone=UTC
       username: [YOUR_USERNAME]
       password: [YOUR_PASSWORD]
+      driver-class-name: com.mysql.cj.jdbc.Driver
 
 ## Application Execution
 
@@ -40,22 +44,22 @@ The API provides the following endpoints to interact with the database:
 - POST /api/customer: Creates a new customer in the database.
 - PUT /api/customer/{id}: Updates an existing customer by its ID, and creates a new one if the ID does not exist.
 - DELETE /api/customer/{id}: Deletes an existing customer by its ID.
-- GET /api/customer/getstatus/{status}: Gets all the customers stored in the database by status.
+- GET /api/customer/bystatus/{status}: Gets all the customers stored in the database by status.
 
 - GET /api/item: Gets all the items stored in the database.
 - GET /api/item/{id}: Gets a specific item by its ID.
 - POST /api/item: Creates a new item in the database.
 - PUT /api/item/{id}: Updates an existing item by its ID, and creates a new one if the ID does not exist.
 - DELETE /api/item/{id}: Deletes an existing item by its ID.
-- GET /api/item/getstatus/{status}: Gets all the items stored in the database by status.
+- GET /api/item/bystatus/{status}: Gets all the items stored in the database by status.
 
 - GET /api/sale: Gets all the sales stored in the database.
 - GET /api/sale/{id}: Gets a specific sale by its ID.
 - POST /api/sale: Creates a new sale in the database.
 - PUT /api/sale/{id}: Updates an existing sale by its ID, and creates a new one if the ID does not exist.
 - DELETE /api/sale/{id}: Deletes an existing sale by its ID.
-- GET /api/sale/getstatus/{status}: Gets all the sale stored in the database by status.
-- GET /api/sale/getitemsbysale/{id}: Gets all items stored in the database by sale.
+- GET /api/sale/bystatus/{status}: Gets all the sale stored in the database by status.
+- GET /api/sale/{id}/items: Gets all items stored in the database by sale.
 
 ## Data Format
 
