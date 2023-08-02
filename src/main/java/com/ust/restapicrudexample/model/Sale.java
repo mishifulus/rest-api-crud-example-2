@@ -26,7 +26,7 @@ public class Sale {
     @NotNull(message = "Total is mandatory")
     @Min(value = 0)
     @Max(value = 1000000)
-    private float total;
+    private double total;
 
      // Validaciones con JSR 380
     @ManyToMany // Relación muchos a muchos con Item
