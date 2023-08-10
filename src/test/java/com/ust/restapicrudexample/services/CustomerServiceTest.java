@@ -85,7 +85,6 @@ public class CustomerServiceTest {
     @Test
     void deleteCustomerTest()
     {
-        Long id = 1L;
         when(customerRepository.findById(1L)).thenReturn(Optional.of(customerA));
         customerService.deleteCustomer(1L);
         Customer result = customerService.getCustomerById(1L).get();
